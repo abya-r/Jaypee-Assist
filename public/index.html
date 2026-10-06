@@ -1,84 +1,576 @@
-<!DOCTYPE html><html><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Jaypee Assist</title><style>
-*{box-sizing:border-box}body{margin:0;font:15px Roboto,system-ui,sans-serif;background:#0f0f0f;color:#f1f1f1}
-header{position:sticky;top:0;z-index:5;height:56px;background:#0f0f0fee;border-bottom:1px solid #272727;display:flex;align-items:center;padding:0 18px;gap:12px}
-.logo{display:flex;align-items:center;gap:8px;font-weight:700;font-size:19px;cursor:pointer;letter-spacing:-.5px}.logo i{width:34px;height:34px;background:#f03;border-radius:50%;color:#fff;font-style:normal;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:19px}
-.sp{flex:1}.sosb{background:#cc0000;color:#fff;font-weight:800;letter-spacing:1px;padding:9px 22px;border-radius:20px;animation:pu 1.6s infinite}
-@keyframes pu{0%{box-shadow:0 0 0 0 #ff000088}100%{box-shadow:0 0 0 14px #ff000000}}
-.app{display:flex}.side{width:210px;padding:12px 8px;position:sticky;top:56px;height:calc(100vh - 56px);flex-shrink:0}
-.side a{display:block;padding:10px 14px;border-radius:10px;cursor:pointer;margin:2px 0}.side a:hover{background:#272727}.side a.on{background:#272727;font-weight:700;border-left:3px solid #f03}
-main{flex:1;padding:22px;max-width:1100px;margin:auto;width:100%}h1{font-size:24px;margin:0 0 14px}h3{margin:20px 0 10px}
-.card{background:#181818;border-radius:14px;padding:16px;margin:0 0 14px;transition:.2s}.card:hover{background:#212121}
-input,select,textarea,button{font:inherit;background:#121212;color:#f1f1f1;border:1px solid #303030;border-radius:10px;padding:10px 12px;margin:4px 0 12px;width:100%}input:focus,textarea:focus,select:focus{outline:0;border-color:#3ea6ff}
-button,.btn{background:#3ea6ff;color:#0f0f0f;font-weight:700;border:0;cursor:pointer;width:auto;padding:10px 20px;border-radius:20px;display:inline-block;text-decoration:none}button:hover,.btn:hover{filter:brightness(1.15)}
-.g{background:#272727!important;color:#f1f1f1!important}.red{background:#cc0000!important;color:#fff!important}
-.chip{background:#272727;color:#f1f1f1;padding:7px 14px;border-radius:9px;margin:0 8px 8px 0;font-weight:500}.chip.on{background:#f1f1f1!important;color:#0f0f0f!important}
-select.i{width:auto;margin:0;padding:6px 10px}label{font-size:12px;color:#aaa;font-weight:700;text-transform:uppercase}small{color:#aaa}
-.tag{padding:3px 10px;border-radius:8px;font-size:12px;background:#303030;margin-right:6px;font-weight:600}.Urgent{background:#cc0000}.High{background:#f90;color:#000}.Medium{background:#3ea6ff;color:#000}.Resolved{background:#2ba640}
-.row{display:flex;gap:12px;flex-wrap:wrap}.row>*{flex:1;min-width:140px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}
-.hero{background:linear-gradient(120deg,#f03,#7b2ff7 60%,#3ea6ff);border-radius:22px;padding:48px 36px;margin-bottom:18px}.hero h1{font-size:44px;line-height:1.1;margin:0 0 10px}.hero p{font-size:18px;max-width:560px}
-.hero .btn{background:#fff;color:#000;margin:6px 10px 0 0}.hero .btn.d{background:#0008;color:#fff}
-.stat{background:#181818;border-radius:14px;padding:18px;border-top:4px solid var(--c,#f03);cursor:pointer}.stat b{font-size:34px;display:block}.stat:hover{transform:translateY(-3px)}
-.live{display:inline-block;width:9px;height:9px;border-radius:50%;background:#f03;margin-right:6px;animation:pu 1.2s infinite}.tick{background:#181818;border-radius:12px;padding:12px;overflow:hidden;white-space:nowrap}.tick div{display:inline-block;animation:mq 22s linear infinite}@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.num{font-size:30px;font-weight:800;color:#f03}.bar{display:flex;align-items:center;gap:10px;margin:6px 0;cursor:pointer;padding:4px;border-radius:8px}.bar:hover{background:#272727}.bar span{width:170px;flex-shrink:0}.bar div{height:20px;border-radius:6px;background:linear-gradient(90deg,#f03,#7b2ff7);min-width:6px;transition:.4s}
-.prog{display:flex;gap:4px;margin:10px 0}.prog i{flex:1;height:5px;border-radius:3px;background:#303030}.prog i.on{background:#2ba640}
-img.th{max-height:110px;border-radius:10px;display:block;margin-top:6px}.fade{animation:fd .5s}@keyframes fd{from{opacity:0;transform:translateY(10px)}}
-.modal{position:fixed;inset:0;background:#000c;display:flex;align-items:center;justify-content:center;z-index:9}.modal>div{background:#212121;padding:22px;border-radius:16px;width:min(460px,94vw)}
-.call{display:flex;align-items:center;justify-content:space-between;background:#181818;border-radius:12px;padding:10px 14px;margin-bottom:8px}.call b{display:block}
-#toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#f1f1f1;color:#000;padding:12px 22px;border-radius:10px;z-index:20;display:none}
-.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:16px}.tile{aspect-ratio:1;background:#181818;border-radius:18px;padding:22px;display:flex;flex-direction:column;justify-content:flex-end;gap:6px;cursor:pointer;transition:.2s;border-bottom:4px solid #f03}.tile:hover{background:#212121;transform:translateY(-4px)}.tile .num{margin-bottom:auto}.tile b{font-size:18px}
-@media(max-width:760px){.side{display:none}.hero h1{font-size:30px}.bar span{width:100px}}
-</style></head><body><div id=root></div><div id=m></div><div id=toast></div><script>
-const e=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const api=(p,m='GET',b)=>fetch('/api/'+p,{method:m,headers:{'Content-Type':'application/json'},body:b&&JSON.stringify(b)}).then(r=>r.json());
-const CATS=['Food','Electric','Network / Wi-Fi','Cleanliness','Furniture / Equipment','Water / Plumbing','Hostel Facilities','Academic / Classroom','Exam Marking','Other'],PRI=['Low','Medium','High','Urgent'],ST=['Open','Assigned','In Progress','Resolved'],
-LC=['Electronic devices','Documents','ID card','Wallet / Keys','Books / Stationery','Bags / Clothing','Other'],LT=['Boys Hostel','Girls Hostel','Academic Block','Other Place'],
-TEAM=['Electrician','Network Team','Housekeeping','Mess Committee','Warden','Maintenance','Admin Office'],
-// EM = [name, dial number, display]. Electrical/Security use 112 until you add real campus numbers.
-EM=[['Fire','101','101 - Fire brigade'],['Medical / Ambulance','102','102 - Ambulance'],['Electrical hazard','112','112 - replace with campus electrical no.'],['Security / Police','112','112 - replace with campus security no.'],['Women helpline','1091','1091 - Women helpline'],['Anti-ragging helpline','18001805522','1800-180-5522']];
-let S={u:null,tab:'',f:null,photo:null,lg:null,lf:'All',lt:'Boys Hostel'},D={c:[],l:[],s:[],o:[]};
-async function load(){try{[D.c,D.l,D.s,D.o]=await Promise.all(['complaints','lost','sos','outbox'].map(x=>api(x)))}catch(x){}}
-async function go(t){S.tab=t;S.f=null;await load();R()}
-const toast=t=>{const x=document.getElementById('toast');x.textContent=t;x.style.display='block';setTimeout(()=>x.style.display='none',3200)};
-const ago=d=>{const s=(Date.now()-new Date(d))/1000;return s<60?'just now':s<3600?Math.floor(s/60)+'m ago':s<86400?Math.floor(s/3600)+'h ago':Math.floor(s/86400)+'d ago'};
-const badge=c=>`<span class="tag ${c}">${c}</span>`;
-const grp=k=>{const m={};D.c.forEach(c=>m[c[k]]=(m[c[k]]||0)+1);return Object.entries(m).sort((a,b)=>b[1]-a[1])};
-function cc(c,st){const i=ST.indexOf(c.status);return `<div class="card fade"><b>#${c.id}</b> &middot; ${e(c.category)} ${badge(c.priority)}${badge(c.status)}<br><small>${e(c.loc)} &middot; ${st?e(c.erno)+' ('+e(c.course)+') &middot; ':''}${ago(c.createdAt)}</small><div class=prog>${ST.map((x,j)=>`<i class="${j<=i?'on':''}" title="${x}"></i>`).join('')}</div><p>${e(c.desc)}</p>${c.photo?`<img class=th src="${c.photo}">`:''}${c.assignedTo?`<small>Assigned to: ${e(c.assignedTo)}</small><br>`:''}<br>${st?`<select class=i onchange="up('${c.id}',{status:this.value})">${ST.map(x=>`<option ${x==c.status?'selected':''}>${x}`).join('')}</select> <select class=i onchange="up('${c.id}',{assignedTo:this.value})"><option value="">Assign to...${TEAM.map(x=>`<option ${x==c.assignedTo?'selected':''}>${x}`).join('')}</select>`:`Priority: <select class=i ${c.status=='Resolved'?'disabled':''} onchange="up('${c.id}',{priority:this.value})">${PRI.map(x=>`<option ${x==c.priority?'selected':''}>${x}`).join('')}</select>`}</div>`}
-async function up(id,b){if(b.assignedTo==='')return;await api('complaints/'+id,'PATCH',b);await load();R();toast('Updated. Email sent to student.')}
-const fl=()=>D.c.filter(c=>!S.f||c[S.f.k]==S.f.v);
-const lst=()=>`${S.f?`<h3>${e(S.f.v)} <button class="g" onclick="S.f=null;R()">Clear filter</button></h3>`:'<h3>All complaints</h3>'}${fl().map(c=>cc(c,1)).join('')||'<p>None.</p>'}`;
-function flt(k,v){S.f={k,v};R()}
-const bars=(k,t)=>{const g=grp(k),mx=g[0]?g[0][1]:1;return `<div class=card><b>${t}</b>${g.map(([n,v])=>`<div class=bar onclick="flt('${k}',${e(JSON.stringify(n))})"><span>${e(n)}</span><div style="width:${v/mx*60}%"></div><b>${v}</b></div>`).join('')||'<br><small>No data yet</small>'}</div>`};
-const stat=(n,l,c,k,v)=>`<div class=stat style="--c:${c}" onclick="${k?`flt('${k}','${v}')`:'S.f=null;R()'}"><b>${n}</b>${l}</div>`;
-const V={
-new:()=>`<h1>Report an issue</h1><div class=card><div class=row><div><label>Category</label><select id=ca>${CATS.filter(x=>x!='Exam Marking').map(x=>`<option>${x}`).join('')}</select></div><div><label>Priority</label><select id=pr>${PRI.map(x=>`<option ${x=='Medium'?'selected':''}>${x}`).join('')}</select></div></div><label>Location type</label><div style="margin-top:6px">${LT.map(x=>`<button class="chip lc ${S.lt==x?'on':''}" data-t="${x}" onclick="setLt('${x}')">${x}</button>`).join('')}</div><div id=lx></div><label>Description</label><textarea id=de rows=4 placeholder="What's wrong?"></textarea><label>Photo (optional)</label><input type=file accept="image/*" onchange="ph(this)"><button onclick=sub()>Submit complaint</button></div>`,
-home:()=>`<h1>What do you need today?</h1><div class=tiles>${[['new','Register complaint','Report an issue with photo and location'],['mine','View complaints','Track status, change priority'],['exam','Exam marking issue','Marks, totalling, re-evaluation'],['lost','Lost & Found','Post or search lost items'],['em','Emergency contacts','Fire, medical, security and more']].map((x,i)=>`<div class=tile onclick="go('${x[0]}')"><div class=num>0${i+1}</div><b>${x[1]}</b><small>${x[2]}</small></div>`).join('')}</div>`,
-exam:()=>`<h1>Exam marking issue</h1><div class=card><div class=row><div><label>Subject code / name</label><input id=sc placeholder="e.g. CS104 DBMS"></div><div><label>Exam type</label><select id=et><option>Mid-semester<option>End-semester<option>Lab / Viva<option>Quiz / Assignment</select></div></div><div class=row><div><label>Issue</label><select id=ei><option>Marks not updated<option>Totalling error<option>Wrong marks entered<option>Answer sheet re-evaluation<option>Question not checked<option>Other</select></div><div><label>Priority</label><select id=pr>${PRI.map(x=>`<option ${x=='Medium'?'selected':''}>${x}`).join('')}</select></div></div><label>Details</label><textarea id=de rows=4 placeholder="Explain what is wrong (question no., marks shown vs expected)"></textarea><label>Photo of answer sheet / marks (optional)</label><input type=file accept="image/*" onchange="ph(this)"><button onclick=subExam()>Submit exam issue</button></div>`,
-mine:()=>`<h1>My complaints</h1>${D.c.filter(c=>c.erno==S.u.erno).map(c=>cc(c)).join('')||'<p>No complaints yet.</p>'}`,
-dash:()=>`<h1>Staff dashboard</h1><div class=grid style="margin-bottom:14px">${stat(D.c.length,'Total complaints','#3ea6ff')}${stat(D.c.filter(c=>c.status=='Open').length,'Open','#f03','status','Open')}${stat(D.c.filter(c=>c.status=='In Progress').length,'In progress','#f90','status','In Progress')}${stat(D.c.filter(c=>c.status=='Resolved').length,'Resolved','#2ba640','status','Resolved')}${stat(D.c.filter(c=>c.priority=='Urgent').length,'Urgent','#cc0000','priority','Urgent')}</div><div class=row>${[['category',CATS],['priority',PRI],['grp',grp('grp').map(x=>x[0])]].map(([k,a])=>`<select onchange="this.value?flt('${k}',this.value):(S.f=null,R())"><option value="">All ${k=='grp'?'locations':k}${a.map(x=>`<option ${S.f&&S.f.k==k&&S.f.v==x?'selected':''}>${e(x)}`).join('')}</select>`).join('')}</div>${D.s.length?`<div class=card><span class=live></span><b>Recent SOS:</b> ${D.s.slice(0,3).map(s=>e(s.type)+' by '+e(s.erno)+' ('+ago(s.createdAt)+')').join(' | ')}</div>`:''}${lst()}`,
-ana:()=>`<h1>Analytics</h1><p>Most frequent issue: <b>${grp('category')[0]?e(grp('category')[0][0]):'-'}</b>. Click any bar to open its complaints.</p><div class=grid style="grid-template-columns:repeat(auto-fit,minmax(320px,1fr))">${bars('category','By category')}${bars('grp','By location')}${bars('priority','By priority')}${bars('status','By status')}</div>${lst()}`,
-lost:()=>`<h1>Lost & Found</h1><div class=card><div class=row><select id=lk><option>Lost<option>Found</select><select id=lc>${LC.map(x=>`<option>${x}`).join('')}</select></div><input id=li placeholder="Item (e.g. Black HP laptop bag)"><input id=lp placeholder="Where / when"><textarea id=ld rows=2 placeholder="Details"></textarea><button onclick=pl()>Post</button></div><div>${['All',...LC].map(x=>`<button class="chip ${S.lf==x?'on':''}" onclick="S.lf='${x}';R()">${x}</button>`).join('')}</div>${D.l.filter(x=>S.lf=='All'||x.cat==S.lf).map(x=>`<div class="card fade"><span class="tag ${x.kind=='Lost'?'Urgent':'Resolved'}">${x.kind}</span><span class=tag>${e(x.cat)}</span><b>${e(x.item)}</b><br><small>${e(x.place)} &middot; contact ${e(x.by)} &middot; ${ago(x.createdAt)}</small><p>${e(x.det)}</p></div>`).join('')||'<p>No posts.</p>'}`,
-em:()=>`<h1>Emergency contacts</h1>${EM.map(callRow).join('')}`,
-mail:()=>`<h1>Email log</h1><small>Notifications sent to students on every update.</small>${D.o.map(m=>`<div class=card><b>${e(m.subject)}</b><br><small>To ${e(m.to)} &middot; ${ago(m.at)} &middot; ${m.sent?'sent via SMTP':'simulated'}</small><p>${e(m.text)}</p></div>`).join('')}`};
-const callRow=x=>`<div class=call><div><b>${x[0]}</b><small>${x[2]}</small></div><a class="btn red" href="tel:${x[1]}" onclick="alertStaff('${x[0]}')">Call</a></div>`;
-function alertStaff(t){api('sos','POST',{type:t,erno:S.u?(S.u.erno||S.u.name):'Guest'})}
-function sos(){m.innerHTML=`<div class=modal onclick="if(event.target==this)m.innerHTML=''"><div><h2 style="margin-top:0">SOS - choose emergency</h2><small>Tap Call to dial instantly. Campus staff are alerted too.</small><br><br>${EM.map(callRow).join('')}<button class=g onclick="m.innerHTML=''">Close</button></div></div>`}
-function R(){const r=document.getElementById('root'),st=S.u&&S.u.role=='staff',tabs=st?[['dash','Dashboard'],['ana','Analytics'],['lost','Lost & Found'],['em','Emergency'],['mail','Email log']]:[['new','New complaint'],['mine','My complaints'],['lost','Lost & Found'],['em','Emergency']];
-const hd=`<header><div class=logo onclick="${S.u?'':'S.lg=null;R()'}"><i><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m11 17 2 2a1 1 0 1 0 3-3"/><path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4"/><path d="m21 3 1 11h-2"/><path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3"/><path d="M3 4h8"/></svg></i>Jaypee Assist</div><div class=sp></div>${S.u&&!st&&S.tab!='home'?`<button class=g onclick="go('home')">Home</button>`:''}${S.u?`<small>${e(S.u.email||'Staff: '+S.u.name)}</small><button class=g onclick="S.u=null;S.lg=null;R()">Logout</button>`:''}<button class=sosb onclick=sos()>SOS</button></header>`;
-r.innerHTML=hd+(!S.u?(S.lg?loginForm():landing()):(st?`<div class=app><div class=side>${tabs.map(t=>`<a class="${S.tab==t[0]?'on':''}" onclick="go('${t[0]}')">${t[1]}</a>`).join('')}</div><main>${V[S.tab]()}</main></div>`:`<main>${V[S.tab]()}</main>`));if(S.u&&S.tab=='new')lf()}
-function landing(){return `<main><div class=hero><span class=tag style="background:#0006"><span class=live></span>LIVE ON CAMPUS</span><h1>Fix your campus.<br>One report at a time.</h1><p>Broken fan, dead Wi-Fi, bad food, exam marking errors or a lost ID card? Report it in 30 seconds, track it live, and get email updates until it is resolved.</p><button class=btn onclick="S.lg='student';R()">Student Login</button><button class="btn d" onclick="S.lg='staff';R()">Staff Login</button></div>
-<h3>What you can do</h3><div class=grid>${[['01','Report with photo','Pick a category, priority and exact hostel, block or classroom.'],['02','Track live','Follow every complaint from Open to Resolved and change priority anytime.'],['03','Exam marking issues','Raise marks, totalling or re-evaluation problems for any subject.'],['04','Lost & Found','A campus-wide board for phones, ID cards, documents and more.'],['05','One-tap SOS','Fire, medical, electrical or security: call straight from the top bar.']].map(x=>`<div class=card><div class=num>${x[0]}</div><b>${x[1]}</b><p><small>${x[2]}</small></p></div>`).join('')}</div><small>For B.Tech, BBA and PhD students across all hostels and blocks.</small></main>`}
-function loginForm(){const s=S.lg=='student';return `<main><div class=card style="max-width:400px;margin:40px auto"><h1>${s?'Student':'Staff'} Login</h1>${s?`<label>Enrollment No.</label><input id=en placeholder="e.g. 251b010" oninput="em.textContent=this.value.toLowerCase()+'@juetguna.in'"><small>Email: <b id=em>-</b></small><br><br><label>Programme</label><select id=co><option>B.Tech<option>BBA<option>PhD</select>`:`<label>Staff ID</label><input id=en placeholder="e.g. warden01"><label>Password</label><input id=pw type=password placeholder="demo: staff123">`}<button onclick=login()>Login</button> <button class=g onclick="S.lg=null;R()">Back</button></div></main>`}
-async function login(){const n=en.value.trim().toLowerCase();if(!n)return toast('Enter your ID');
-if(S.lg=='student'){if(!/^[0-9a-z]{5,12}$/.test(n))return toast('Invalid enrollment no.');S.u={role:'student',erno:n,email:n+'@juetguna.in',course:co.value};S.tab='home'}
-else{if(pw.value!='staff123')return toast('Wrong password (demo: staff123)');S.u={role:'staff',name:n};S.tab='dash'}await load();R()}
-function setLt(t){S.lt=t;document.querySelectorAll('.lc').forEach(b=>b.classList.toggle('on',b.dataset.t==t));lf()}
-function lf(){const t=S.lt;lx.innerHTML=t=='Boys Hostel'?`<div class=row><input id=a1 placeholder="Hostel no. (1-21)"><input id=a2 placeholder="Room no."></div>`:t=='Girls Hostel'?`<div class=row><input id=a1 placeholder="Block (A, B, C or D)"><input id=a2 placeholder="Room no."></div>`:`<input id=a1 placeholder="${t=='Academic Block'?'Building / classroom, e.g. LT-3':'Place, e.g. Library, Canteen'}"><input id=a2 type=hidden>`}
-function ph(i){const f=i.files[0];if(!f)return;const r=new FileReader();r.onload=()=>S.photo=r.result;r.readAsDataURL(f)}
-async function sub(){const t=S.lt,h=t.includes('Hostel'),a=a1.value.trim();let g=a;if(!a||!de.value.trim()||(h&&!a2.value.trim()))return toast('Fill location and description');
-if(t=='Boys Hostel'){const n=+a.replace(/\D/g,'');if(!(n>=1&&n<=21))return toast('Boys hostel no. must be 1-21');g='Boys H-'+n}
-if(t=='Girls Hostel'){const b=a.toUpperCase().replace(/^BLOCK\s*/,'');if(!/^[A-D]$/.test(b))return toast('Girls block must be A, B, C or D');g='Girls Block '+b}
-await api('complaints','POST',{erno:S.u.erno,email:S.u.email,course:S.u.course,category:ca.value,priority:pr.value,grp:g,loc:h?g+', Room '+a2.value.trim():g,desc:de.value.trim(),photo:S.photo});S.photo=null;await go('mine');toast('Submitted. Confirmation email sent to '+S.u.email)}
-async function subExam(){const c=sc.value.trim();if(!c||!de.value.trim())return toast('Fill subject and details');await api('complaints','POST',{erno:S.u.erno,email:S.u.email,course:S.u.course,category:'Exam Marking',priority:pr.value,grp:'Exam: '+c.toUpperCase(),loc:c+' ('+et.value+') - '+ei.value,desc:de.value.trim(),photo:S.photo});S.photo=null;await go('mine');toast('Submitted. Confirmation email sent to '+S.u.email)}
-async function pl(){if(!li.value.trim())return toast('Enter the item');await api('lost','POST',{kind:lk.value,cat:lc.value,item:li.value,place:lp.value,det:ld.value,by:S.u.email||'Staff'});await go('lost');toast('Posted for all students to see')}
-load().then(R);
-</script></body></html>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8>
+    <meta name=viewport content="width=device-width,initial-scale=1">
+    <title>Jaypee Assist</title>
+    <style>
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            font: 15px Roboto, system-ui, sans-serif;
+            background: #0f0f0f;
+            color: #f1f1f1
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 5;
+            height: 56px;
+            background: #0f0f0fee;
+            border-bottom: 1px solid #272727;
+            display: flex;
+            align-items: center;
+            padding: 0 18px;
+            gap: 12px
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 700;
+            font-size: 19px;
+            cursor: pointer;
+            letter-spacing: -.5px
+        }
+
+        .logo i {
+            width: 34px;
+            height: 34px;
+            background: #f03;
+            border-radius: 50%;
+            color: #fff;
+            font-style: normal;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 19px
+        }
+
+        .sp {
+            flex: 1
+        }
+
+        .sosb {
+            background: #cc0000;
+            color: #fff;
+            font-weight: 800;
+            letter-spacing: 1px;
+            padding: 9px 22px;
+            border-radius: 20px;
+            animation: pu 1.6s infinite
+        }
+
+        @keyframes pu {
+            0% {
+                box-shadow: 0 0 0 0 #ff000088
+            }
+
+            100% {
+                box-shadow: 0 0 0 14px #ff000000
+            }
+        }
+
+        .app {
+            display: flex
+        }
+
+        .side {
+            width: 210px;
+            padding: 12px 8px;
+            position: sticky;
+            top: 56px;
+            height: calc(100vh - 56px);
+            flex-shrink: 0
+        }
+
+        .side a {
+            display: block;
+            padding: 10px 14px;
+            border-radius: 10px;
+            cursor: pointer;
+            margin: 2px 0
+        }
+
+        .side a:hover {
+            background: #272727
+        }
+
+        .side a.on {
+            background: #272727;
+            font-weight: 700;
+            border-left: 3px solid #f03
+        }
+
+        main {
+            flex: 1;
+            padding: 22px;
+            max-width: 1100px;
+            margin: auto;
+            width: 100%
+        }
+
+        h1 {
+            font-size: 24px;
+            margin: 0 0 14px
+        }
+
+        h3 {
+            margin: 20px 0 10px
+        }
+
+        .card {
+            background: #181818;
+            border-radius: 14px;
+            padding: 16px;
+            margin: 0 0 14px;
+            transition: .2s
+        }
+
+        .card:hover {
+            background: #212121
+        }
+
+        input,
+        select,
+        textarea,
+        button {
+            font: inherit;
+            background: #121212;
+            color: #f1f1f1;
+            border: 1px solid #303030;
+            border-radius: 10px;
+            padding: 10px 12px;
+            margin: 4px 0 12px;
+            width: 100%
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            outline: 0;
+            border-color: #3ea6ff
+        }
+
+        button,
+        .btn {
+            background: #3ea6ff;
+            color: #0f0f0f;
+            font-weight: 700;
+            border: 0;
+            cursor: pointer;
+            width: auto;
+            padding: 10px 20px;
+            border-radius: 20px;
+            display: inline-block;
+            text-decoration: none
+        }
+
+        button:hover,
+        .btn:hover {
+            filter: brightness(1.15)
+        }
+
+        .g {
+            background: #272727 !important;
+            color: #f1f1f1 !important
+        }
+
+        .red {
+            background: #cc0000 !important;
+            color: #fff !important
+        }
+
+        .chip {
+            background: #272727;
+            color: #f1f1f1;
+            padding: 7px 14px;
+            border-radius: 9px;
+            margin: 0 8px 8px 0;
+            font-weight: 500
+        }
+
+        .chip.on {
+            background: #f1f1f1 !important;
+            color: #0f0f0f !important
+        }
+
+        select.i {
+            width: auto;
+            margin: 0;
+            padding: 6px 10px
+        }
+
+        label {
+            font-size: 12px;
+            color: #aaa;
+            font-weight: 700;
+            text-transform: uppercase
+        }
+
+        small {
+            color: #aaa
+        }
+
+        .tag {
+            padding: 3px 10px;
+            border-radius: 8px;
+            font-size: 12px;
+            background: #303030;
+            margin-right: 6px;
+            font-weight: 600
+        }
+
+        .Urgent {
+            background: #cc0000
+        }
+
+        .High {
+            background: #f90;
+            color: #000
+        }
+
+        .Medium {
+            background: #3ea6ff;
+            color: #000
+        }
+
+        .Resolved {
+            background: #2ba640
+        }
+
+        .row {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap
+        }
+
+        .row>* {
+            flex: 1;
+            min-width: 140px
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 14px
+        }
+
+        .hero {
+            background: linear-gradient(120deg, #f03, #7b2ff7 60%, #3ea6ff);
+            border-radius: 22px;
+            padding: 48px 36px;
+            margin-bottom: 18px
+        }
+
+        .hero h1 {
+            font-size: 44px;
+            line-height: 1.1;
+            margin: 0 0 10px
+        }
+
+        .hero p {
+            font-size: 18px;
+            max-width: 560px
+        }
+
+        .hero .btn {
+            background: #fff;
+            color: #000;
+            margin: 6px 10px 0 0
+        }
+
+        .hero .btn.d {
+            background: #0008;
+            color: #fff
+        }
+
+        .stat {
+            background: #181818;
+            border-radius: 14px;
+            padding: 18px;
+            border-top: 4px solid var(--c, #f03);
+            cursor: pointer
+        }
+
+        .stat b {
+            font-size: 34px;
+            display: block
+        }
+
+        .stat:hover {
+            transform: translateY(-3px)
+        }
+
+        .live {
+            display: inline-block;
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: #f03;
+            margin-right: 6px;
+            animation: pu 1.2s infinite
+        }
+
+        .tick {
+            background: #181818;
+            border-radius: 12px;
+            padding: 12px;
+            overflow: hidden;
+            white-space: nowrap
+        }
+
+        .tick div {
+            display: inline-block;
+            animation: mq 22s linear infinite
+        }
+
+        @keyframes mq {
+            from {
+                transform: translateX(0)
+            }
+
+            to {
+                transform: translateX(-50%)
+            }
+        }
+
+        .num {
+            font-size: 30px;
+            font-weight: 800;
+            color: #f03
+        }
+
+        .bar {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 6px 0;
+            cursor: pointer;
+            padding: 4px;
+            border-radius: 8px
+        }
+
+        .bar:hover {
+            background: #272727
+        }
+
+        .bar span {
+            width: 170px;
+            flex-shrink: 0
+        }
+
+        .bar div {
+            height: 20px;
+            border-radius: 6px;
+            background: linear-gradient(90deg, #f03, #7b2ff7);
+            min-width: 6px;
+            transition: .4s
+        }
+
+        .prog {
+            display: flex;
+            gap: 4px;
+            margin: 10px 0
+        }
+
+        .prog i {
+            flex: 1;
+            height: 5px;
+            border-radius: 3px;
+            background: #303030
+        }
+
+        .prog i.on {
+            background: #2ba640
+        }
+
+        img.th {
+            max-height: 110px;
+            border-radius: 10px;
+            display: block;
+            margin-top: 6px
+        }
+
+        .fade {
+            animation: fd .5s
+        }
+
+        @keyframes fd {
+            from {
+                opacity: 0;
+                transform: translateY(10px)
+            }
+        }
+
+        .modal {
+            position: fixed;
+            inset: 0;
+            background: #000c;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9
+        }
+
+        .modal>div {
+            background: #212121;
+            padding: 22px;
+            border-radius: 16px;
+            width: min(460px, 94vw)
+        }
+
+        .call {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #181818;
+            border-radius: 12px;
+            padding: 10px 14px;
+            margin-bottom: 8px
+        }
+
+        .call b {
+            display: block
+        }
+
+        #toast {
+            position: fixed;
+            left: 50%;
+            bottom: 24px;
+            transform: translateX(-50%);
+            background: #f1f1f1;
+            color: #000;
+            padding: 12px 22px;
+            border-radius: 10px;
+            z-index: 20;
+            display: none
+        }
+
+        .tiles {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+            gap: 16px
+        }
+
+        .tile {
+            aspect-ratio: 1;
+            background: #181818;
+            border-radius: 18px;
+            padding: 22px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            gap: 6px;
+            cursor: pointer;
+            transition: .2s;
+            border-bottom: 4px solid #f03
+        }
+
+        .tile:hover {
+            background: #212121;
+            transform: translateY(-4px)
+        }
+
+        .tile .num {
+            margin-bottom: auto
+        }
+
+        .tile b {
+            font-size: 18px
+        }
+
+        @media(max-width:760px) {
+            .side {
+                display: none
+            }
+
+            .hero h1 {
+                font-size: 30px
+            }
+
+            .bar span {
+                width: 100px
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id=root></div>
+    <div id=m></div>
+    <div id=toast></div>
+    <script>
+        const e = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+        const api = (p, m = 'GET', b) => fetch('/api/' + p, { method: m, headers: { 'Content-Type': 'application/json' }, body: b && JSON.stringify(b) }).then(r => r.json());
+        const CATS = ['Food', 'Electric', 'Network / Wi-Fi', 'Cleanliness', 'Furniture / Equipment', 'Water / Plumbing', 'Hostel Facilities', 'Academic / Classroom', 'Exam Marking', 'Other'], PRI = ['Low', 'Medium', 'High', 'Urgent'], ST = ['Open', 'Assigned', 'In Progress', 'Resolved'],
+            LC = ['Electronic devices', 'Documents', 'ID card', 'Wallet / Keys', 'Books / Stationery', 'Bags / Clothing', 'Other'], LT = ['Boys Hostel', 'Girls Hostel', 'Academic Block', 'Other Place'],
+            TEAM = ['Electrician', 'Network Team', 'Housekeeping', 'Mess Committee', 'Warden', 'Maintenance', 'Admin Office'],
+            // EM = [name, dial number, display]. Electrical/Security use 112 until you add real campus numbers.
+            EM = [['Fire', '101', '101 - Fire brigade'], ['Medical / Ambulance', '102', '102 - Ambulance'], ['Electrical hazard', '112', '112 - replace with campus electrical no.'], ['Security / Police', '112', '112 - replace with campus security no.'], ['Women helpline', '1091', '1091 - Women helpline'], ['Anti-ragging helpline', '18001805522', '1800-180-5522']];
+        let S = { u: null, tab: '', f: null, photo: null, lg: null, lf: 'All', lt: 'Boys Hostel' }, D = { c: [], l: [], s: [], o: [] };
+        async function load() { try { [D.c, D.l, D.s, D.o] = await Promise.all(['complaints', 'lost', 'sos', 'outbox'].map(x => api(x))) } catch (x) { } }
+        async function go(t) { S.tab = t; S.f = null; await load(); R() }
+        const toast = t => { const x = document.getElementById('toast'); x.textContent = t; x.style.display = 'block'; setTimeout(() => x.style.display = 'none', 3200) };
+        const ago = d => { const s = (Date.now() - new Date(d)) / 1000; return s < 60 ? 'just now' : s < 3600 ? Math.floor(s / 60) + 'm ago' : s < 86400 ? Math.floor(s / 3600) + 'h ago' : Math.floor(s / 86400) + 'd ago' };
+        const badge = c => `<span class="tag ${c}">${c}</span>`;
+        const grp = k => { const m = {}; D.c.forEach(c => m[c[k]] = (m[c[k]] || 0) + 1); return Object.entries(m).sort((a, b) => b[1] - a[1]) };
+        function cc(c, st) { const i = ST.indexOf(c.status); return `<div class="card fade"><b>#${c.id}</b> &middot; ${e(c.category)} ${badge(c.priority)}${badge(c.status)}<br><small>${e(c.loc)} &middot; ${st ? e(c.erno) + ' (' + e(c.course) + ') &middot; ' : ''}${ago(c.createdAt)}</small><div class=prog>${ST.map((x, j) => `<i class="${j <= i ? 'on' : ''}" title="${x}"></i>`).join('')}</div><p>${e(c.desc)}</p>${c.photo ? `<img class=th src="${c.photo}">` : ''}${c.assignedTo ? `<small>Assigned to: ${e(c.assignedTo)}</small><br>` : ''}<br>${st ? `<select class=i onchange="up('${c.id}',{status:this.value})">${ST.map(x => `<option ${x == c.status ? 'selected' : ''}>${x}`).join('')}</select> <select class=i onchange="up('${c.id}',{assignedTo:this.value})"><option value="">Assign to...${TEAM.map(x => `<option ${x == c.assignedTo ? 'selected' : ''}>${x}`).join('')}</select>` : `Priority: <select class=i ${c.status == 'Resolved' ? 'disabled' : ''} onchange="up('${c.id}',{priority:this.value})">${PRI.map(x => `<option ${x == c.priority ? 'selected' : ''}>${x}`).join('')}</select>`}</div>` }
+        async function up(id, b) { if (b.assignedTo === '') return; await api('complaints/' + id, 'PATCH', b); await load(); R(); toast('Updated. Email sent to student.') }
+        const fl = () => D.c.filter(c => !S.f || c[S.f.k] == S.f.v);
+        const lst = () => `${S.f ? `<h3>${e(S.f.v)} <button class="g" onclick="S.f=null;R()">Clear filter</button></h3>` : '<h3>All complaints</h3>'}${fl().map(c => cc(c, 1)).join('') || '<p>None.</p>'}`;
+        function flt(k, v) { S.f = { k, v }; R() }
+        const bars = (k, t) => { const g = grp(k), mx = g[0] ? g[0][1] : 1; return `<div class=card><b>${t}</b>${g.map(([n, v]) => `<div class=bar onclick="flt('${k}',${e(JSON.stringify(n))})"><span>${e(n)}</span><div style="width:${v / mx * 60}%"></div><b>${v}</b></div>`).join('') || '<br><small>No data yet</small>'}</div>` };
+        const stat = (n, l, c, k, v) => `<div class=stat style="--c:${c}" onclick="${k ? `flt('${k}','${v}')` : 'S.f=null;R()'}"><b>${n}</b>${l}</div>`;
+        const V = {
+            new: () => `<h1>Report an issue</h1><div class=card><div class=row><div><label>Category</label><select id=ca>${CATS.filter(x => x != 'Exam Marking').map(x => `<option>${x}`).join('')}</select></div><div><label>Priority</label><select id=pr>${PRI.map(x => `<option ${x == 'Medium' ? 'selected' : ''}>${x}`).join('')}</select></div></div><label>Location type</label><div style="margin-top:6px">${LT.map(x => `<button class="chip lc ${S.lt == x ? 'on' : ''}" data-t="${x}" onclick="setLt('${x}')">${x}</button>`).join('')}</div><div id=lx></div><label>Description</label><textarea id=de rows=4 placeholder="What's wrong?"></textarea><label>Photo (optional)</label><input type=file accept="image/*" onchange="ph(this)"><button onclick=sub()>Submit complaint</button></div>`,
+            home: () => `<h1>What do you need today?</h1><div class=tiles>${[['new', 'Register complaint', 'Report an issue with photo and location'], ['mine', 'View complaints', 'Track status, change priority'], ['exam', 'Exam marking issue', 'Marks, totalling, re-evaluation'], ['lost', 'Lost & Found', 'Post or search lost items'], ['em', 'Emergency contacts', 'Fire, medical, security and more']].map((x, i) => `<div class=tile onclick="go('${x[0]}')"><div class=num>0${i + 1}</div><b>${x[1]}</b><small>${x[2]}</small></div>`).join('')}</div>`,
+            exam: () => `<h1>Exam marking issue</h1><div class=card><div class=row><div><label>Subject code / name</label><input id=sc placeholder="e.g. CS104 DBMS"></div><div><label>Exam type</label><select id=et><option>Mid-semester<option>End-semester<option>Lab / Viva<option>Quiz / Assignment</select></div></div><div class=row><div><label>Issue</label><select id=ei><option>Marks not updated<option>Totalling error<option>Wrong marks entered<option>Answer sheet re-evaluation<option>Question not checked<option>Other</select></div><div><label>Priority</label><select id=pr>${PRI.map(x => `<option ${x == 'Medium' ? 'selected' : ''}>${x}`).join('')}</select></div></div><label>Details</label><textarea id=de rows=4 placeholder="Explain what is wrong (question no., marks shown vs expected)"></textarea><label>Photo of answer sheet / marks (optional)</label><input type=file accept="image/*" onchange="ph(this)"><button onclick=subExam()>Submit exam issue</button></div>`,
+            mine: () => `<h1>My complaints</h1>${D.c.filter(c => c.erno == S.u.erno).map(c => cc(c)).join('') || '<p>No complaints yet.</p>'}`,
+            dash: () => `<h1>Staff dashboard</h1><div class=grid style="margin-bottom:14px">${stat(D.c.length, 'Total complaints', '#3ea6ff')}${stat(D.c.filter(c => c.status == 'Open').length, 'Open', '#f03', 'status', 'Open')}${stat(D.c.filter(c => c.status == 'In Progress').length, 'In progress', '#f90', 'status', 'In Progress')}${stat(D.c.filter(c => c.status == 'Resolved').length, 'Resolved', '#2ba640', 'status', 'Resolved')}${stat(D.c.filter(c => c.priority == 'Urgent').length, 'Urgent', '#cc0000', 'priority', 'Urgent')}</div><div class=row>${[['category', CATS], ['priority', PRI], ['grp', grp('grp').map(x => x[0])]].map(([k, a]) => `<select onchange="this.value?flt('${k}',this.value):(S.f=null,R())"><option value="">All ${k == 'grp' ? 'locations' : k}${a.map(x => `<option ${S.f && S.f.k == k && S.f.v == x ? 'selected' : ''}>${e(x)}`).join('')}</select>`).join('')}</div>${D.s.length ? `<div class=card><span class=live></span><b>Recent SOS:</b> ${D.s.slice(0, 3).map(s => e(s.type) + ' by ' + e(s.erno) + ' (' + ago(s.createdAt) + ')').join(' | ')}</div>` : ''}${lst()}`,
+            ana: () => `<h1>Analytics</h1><p>Most frequent issue: <b>${grp('category')[0] ? e(grp('category')[0][0]) : '-'}</b>. Click any bar to open its complaints.</p><div class=grid style="grid-template-columns:repeat(auto-fit,minmax(320px,1fr))">${bars('category', 'By category')}${bars('grp', 'By location')}${bars('priority', 'By priority')}${bars('status', 'By status')}</div>${lst()}`,
+            lost: () => `<h1>Lost & Found</h1><div class=card><div class=row><select id=lk><option>Lost<option>Found</select><select id=lc>${LC.map(x => `<option>${x}`).join('')}</select></div><input id=li placeholder="Item (e.g. Black HP laptop bag)"><input id=lp placeholder="Where / when"><textarea id=ld rows=2 placeholder="Details"></textarea><button onclick=pl()>Post</button></div><div>${['All', ...LC].map(x => `<button class="chip ${S.lf == x ? 'on' : ''}" onclick="S.lf='${x}';R()">${x}</button>`).join('')}</div>${D.l.filter(x => S.lf == 'All' || x.cat == S.lf).map(x => `<div class="card fade"><span class="tag ${x.kind == 'Lost' ? 'Urgent' : 'Resolved'}">${x.kind}</span><span class=tag>${e(x.cat)}</span><b>${e(x.item)}</b><br><small>${e(x.place)} &middot; contact ${e(x.by)} &middot; ${ago(x.createdAt)}</small><p>${e(x.det)}</p></div>`).join('') || '<p>No posts.</p>'}`,
+            em: () => `<h1>Emergency contacts</h1>${EM.map(callRow).join('')}`,
+            mail: () => `<h1>Email log</h1><small>Notifications sent to students on every update.</small>${D.o.map(m => `<div class=card><b>${e(m.subject)}</b><br><small>To ${e(m.to)} &middot; ${ago(m.at)} &middot; ${m.sent ? 'sent via SMTP' : 'simulated'}</small><p>${e(m.text)}</p></div>`).join('')}`
+        };
+        const callRow = x => `<div class=call><div><b>${x[0]}</b><small>${x[2]}</small></div><a class="btn red" href="tel:${x[1]}" onclick="alertStaff('${x[0]}')">Call</a></div>`;
+        function alertStaff(t) { api('sos', 'POST', { type: t, erno: S.u ? (S.u.erno || S.u.name) : 'Guest' }) }
+        function sos() { m.innerHTML = `<div class=modal onclick="if(event.target==this)m.innerHTML=''"><div><h2 style="margin-top:0">SOS - choose emergency</h2><small>Tap Call to dial instantly. Campus staff are alerted too.</small><br><br>${EM.map(callRow).join('')}<button class=g onclick="m.innerHTML=''">Close</button></div></div>` }
+        function R() {
+            const r = document.getElementById('root'), st = S.u && S.u.role == 'staff', tabs = st ? [['dash', 'Dashboard'], ['ana', 'Analytics'], ['lost', 'Lost & Found'], ['em', 'Emergency'], ['mail', 'Email log']] : [['new', 'New complaint'], ['mine', 'My complaints'], ['lost', 'Lost & Found'], ['em', 'Emergency']];
+            const hd = `<header><div class=logo onclick="${S.u ? '' : 'S.lg=null;R()'}"><i><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m11 17 2 2a1 1 0 1 0 3-3"/><path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4"/><path d="m21 3 1 11h-2"/><path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3"/><path d="M3 4h8"/></svg></i>Jaypee Assist</div><div class=sp></div>${S.u && !st && S.tab != 'home' ? `<button class=g onclick="go('home')">Home</button>` : ''}${S.u ? `<small>${e(S.u.email || 'Staff: ' + S.u.name)}</small><button class=g onclick="S.u=null;S.lg=null;R()">Logout</button>` : ''}<button class=sosb onclick=sos()>SOS</button></header>`;
+            r.innerHTML = hd + (!S.u ? (S.lg ? loginForm() : landing()) : (st ? `<div class=app><div class=side>${tabs.map(t => `<a class="${S.tab == t[0] ? 'on' : ''}" onclick="go('${t[0]}')">${t[1]}</a>`).join('')}</div><main>${V[S.tab]()}</main></div>` : `<main>${V[S.tab]()}</main>`)); if (S.u && S.tab == 'new') lf()
+        }
+        function landing() {
+            return `<main><div class=hero><span class=tag style="background:#0006"><span class=live></span>LIVE ON CAMPUS</span><h1>Fix your campus.<br>One report at a time.</h1><p>Broken fan, dead Wi-Fi, bad food, exam marking errors or a lost ID card? Report it in 30 seconds, track it live, and get email updates until it is resolved.</p><button class=btn onclick="S.lg='student';R()">Student Login</button><button class="btn d" onclick="S.lg='staff';R()">Staff Login</button></div>
+<h3>What you can do</h3><div class=grid>${[['01', 'Report with photo', 'Pick a category, priority and exact hostel, block or classroom.'], ['02', 'Track live', 'Follow every complaint from Open to Resolved and change priority anytime.'], ['03', 'Exam marking issues', 'Raise marks, totalling or re-evaluation problems for any subject.'], ['04', 'Lost & Found', 'A campus-wide board for phones, ID cards, documents and more.'], ['05', 'One-tap SOS', 'Fire, medical, electrical or security: call straight from the top bar.']].map(x => `<div class=card><div class=num>${x[0]}</div><b>${x[1]}</b><p><small>${x[2]}</small></p></div>`).join('')}</div><small>For B.Tech, BBA and PhD students across all hostels and blocks.</small></main>`
+        }
+        function loginForm() { const s = S.lg == 'student'; return `<main><div class=card style="max-width:400px;margin:40px auto"><h1>${s ? 'Student' : 'Staff'} Login</h1>${s ? `<label>Enrollment No.</label><input id=en placeholder="e.g. 251b010" oninput="em.textContent=this.value.toLowerCase()+'@juetguna.in'"><small>Email: <b id=em>-</b></small><br><br><label>Programme</label><select id=co><option>B.Tech<option>BBA<option>PhD</select>` : `<label>Staff ID</label><input id=en placeholder="e.g. warden01"><label>Password</label><input id=pw type=password placeholder="demo: staff123">`}<button onclick=login()>Login</button> <button class=g onclick="S.lg=null;R()">Back</button></div></main>` }
+        async function login() {
+            const n = en.value.trim().toLowerCase(); if (!n) return toast('Enter your ID');
+            if (S.lg == 'student') { if (!/^[0-9a-z]{5,12}$/.test(n)) return toast('Invalid enrollment no.'); S.u = { role: 'student', erno: n, email: n + '@juetguna.in', course: co.value }; S.tab = 'home' }
+            else { if (pw.value != 'staff123') return toast('Wrong password (demo: staff123)'); S.u = { role: 'staff', name: n }; S.tab = 'dash' } await load(); R()
+        }
+        function setLt(t) { S.lt = t; document.querySelectorAll('.lc').forEach(b => b.classList.toggle('on', b.dataset.t == t)); lf() }
+        function lf() { const t = S.lt; lx.innerHTML = t == 'Boys Hostel' ? `<div class=row><input id=a1 placeholder="Hostel no. (1-21)"><input id=a2 placeholder="Room no."></div>` : t == 'Girls Hostel' ? `<div class=row><input id=a1 placeholder="Block (A, B, C or D)"><input id=a2 placeholder="Room no."></div>` : `<input id=a1 placeholder="${t == 'Academic Block' ? 'Building / classroom, e.g. LT-3' : 'Place, e.g. Library, Canteen'}"><input id=a2 type=hidden>` }
+        function ph(i) { const f = i.files[0]; if (!f) return; const r = new FileReader(); r.onload = () => S.photo = r.result; r.readAsDataURL(f) }
+        async function sub() {
+            const t = S.lt, h = t.includes('Hostel'), a = a1.value.trim(); let g = a; if (!a || !de.value.trim() || (h && !a2.value.trim())) return toast('Fill location and description');
+            if (t == 'Boys Hostel') { const n = +a.replace(/\D/g, ''); if (!(n >= 1 && n <= 21)) return toast('Boys hostel no. must be 1-21'); g = 'Boys H-' + n }
+            if (t == 'Girls Hostel') { const b = a.toUpperCase().replace(/^BLOCK\s*/, ''); if (!/^[A-D]$/.test(b)) return toast('Girls block must be A, B, C or D'); g = 'Girls Block ' + b }
+            await api('complaints', 'POST', { erno: S.u.erno, email: S.u.email, course: S.u.course, category: ca.value, priority: pr.value, grp: g, loc: h ? g + ', Room ' + a2.value.trim() : g, desc: de.value.trim(), photo: S.photo }); S.photo = null; await go('mine'); toast('Submitted. Confirmation email sent to ' + S.u.email)
+        }
+        async function subExam() { const c = sc.value.trim(); if (!c || !de.value.trim()) return toast('Fill subject and details'); await api('complaints', 'POST', { erno: S.u.erno, email: S.u.email, course: S.u.course, category: 'Exam Marking', priority: pr.value, grp: 'Exam: ' + c.toUpperCase(), loc: c + ' (' + et.value + ') - ' + ei.value, desc: de.value.trim(), photo: S.photo }); S.photo = null; await go('mine'); toast('Submitted. Confirmation email sent to ' + S.u.email) }
+        async function pl() { if (!li.value.trim()) return toast('Enter the item'); await api('lost', 'POST', { kind: lk.value, cat: lc.value, item: li.value, place: lp.value, det: ld.value, by: S.u.email || 'Staff' }); await go('lost'); toast('Posted for all students to see') }
+        load().then(R);
+    </script>
+</body>
+
+</html>

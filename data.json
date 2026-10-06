@@ -1,229 +1,229 @@
 {
- "complaints": [
-  {
-   "erno": "251b010",
-   "email": "251b010@juetguna.in",
-   "course": "B.Tech",
-   "category": "Exam Marking",
-   "priority": "Medium",
-   "grp": "Exam: DS",
-   "loc": "DS (Mid-semester) - Answer sheet re-evaluation",
-   "desc": "Request for reevaluation",
-   "photo": null,
-   "id": "muwlbt2n",
-   "createdAt": "2026-10-06T11:23:40.655Z",
-   "status": "Open",
-   "history": [
-    {
-     "s": "Open",
-     "at": "2026-10-06T11:23:40.655Z"
-    }
-   ]
-  },
-  {
-   "erno": "251b010",
-   "email": "251b010@juetguna.in",
-   "course": "B.Tech",
-   "category": "Cleanliness",
-   "priority": "Low",
-   "grp": "Girls Block A",
-   "loc": "Girls Block A, Room 10",
-   "desc": "...",
-   "photo": null,
-   "id": "muwlb0kt",
-   "createdAt": "2026-10-06T11:23:03.725Z",
-   "status": "Resolved",
-   "history": [
-    {
-     "s": "Open",
-     "at": "2026-10-06T11:23:03.725Z"
-    },
-    {
-     "s": "Assigned",
-     "at": "2026-10-06T11:25:05.095Z"
-    },
-    {
-     "s": "Resolved",
-     "at": "2026-10-06T11:25:24.662Z"
-    }
-   ],
-   "assignedTo": "Housekeeping"
-  },
-  {
-   "erno": "251b010",
-   "email": "251b010@juetguna.in",
-   "course": "B.Tech",
-   "category": "Exam Marking",
-   "priority": "High",
-   "grp": "Exam: CS104 DBMS",
-   "loc": "CS104 DBMS (Mid-semester) - Marks not updated",
-   "desc": "My marks had been revised by the teacher, but the revised marks have not yet been reflected on CampusLynx.",
-   "photo": null,
-   "id": "muwl9waf",
-   "createdAt": "2026-10-06T11:22:11.511Z",
-   "status": "Open",
-   "history": [
-    {
-     "s": "Open",
-     "at": "2026-10-06T11:22:11.511Z"
-    }
-   ]
-  },
-  {
-   "erno": "251b010",
-   "email": "251b010@juetguna.in",
-   "course": "B.Tech",
-   "category": "Food",
-   "priority": "Medium",
-   "grp": "Girls Block D",
-   "loc": "Girls Block D, Room 1",
-   "desc": "Unhygienic handling of food in mess.",
-   "photo": null,
-   "id": "muwl8b8n",
-   "createdAt": "2026-10-06T11:20:57.575Z",
-   "status": "Open",
-   "history": [
-    {
-     "s": "Open",
-     "at": "2026-10-06T11:20:57.575Z"
-    }
-   ]
-  },
-  {
-   "erno": "251b010",
-   "email": "251b010@juetguna.in",
-   "course": "B.Tech",
-   "category": "Electric",
-   "priority": "Medium",
-   "grp": "Girls Block D",
-   "loc": "Girls Block D, Room 1",
-   "desc": "Room fan not working.",
-   "photo": null,
-   "id": "muwkn9dl",
-   "createdAt": "2026-10-06T11:04:35.385Z",
-   "status": "Assigned",
-   "history": [
-    {
-     "s": "Open",
-     "at": "2026-10-06T11:04:35.385Z"
-    },
-    {
-     "s": "Assigned",
-     "at": "2026-10-06T11:25:10.180Z"
-    }
-   ],
-   "assignedTo": "Electrician"
-  }
- ],
- "lost": [
-  {
-   "kind": "Lost",
-   "cat": "Electronic devices",
-   "item": "Earbuds",
-   "place": "Lt-2",
-   "det": "earbud lost",
-   "by": "251b010@juetguna.in",
-   "id": "muwlcofu",
-   "createdAt": "2026-10-06T11:24:21.306Z"
-  },
-  {
-   "kind": "Found",
-   "cat": "Electronic devices",
-   "item": "Earbud",
-   "place": "LT-1",
-   "det": "Blackoppo earbuds found",
-   "by": "251b010@juetguna.in",
-   "id": "muwlc8lo",
-   "createdAt": "2026-10-06T11:24:00.780Z"
-  },
-  {
-   "kind": "Lost",
-   "cat": "Electronic devices",
-   "item": "Earbud",
-   "place": "Thursday, LT-1/2",
-   "det": "Black Oppo right earbud lost.",
-   "by": "251b010@juetguna.in",
-   "id": "muwknzos",
-   "createdAt": "2026-10-06T11:05:09.484Z"
-  }
- ],
- "sos": [
-  {
-   "type": "Fire",
-   "erno": "251b010",
-   "id": "muwlctwh",
-   "createdAt": "2026-10-06T11:24:28.385Z"
-  },
-  {
-   "type": "Fire",
-   "erno": "Guest",
-   "id": "muwl0bfm",
-   "createdAt": "2026-10-06T11:14:44.578Z"
-  }
- ],
- "outbox": [
-  {
-   "to": "251b010@juetguna.in",
-   "subject": "Update on complaint #muwlb0kt",
-   "text": "Status: Resolved",
-   "at": "2026-10-06T11:25:24.662Z",
-   "sent": false
-  },
-  {
-   "to": "251b010@juetguna.in",
-   "subject": "Update on complaint #muwkn9dl",
-   "text": "Status: Assigned\nAssigned to: Electrician",
-   "at": "2026-10-06T11:25:10.180Z",
-   "sent": false
-  },
-  {
-   "to": "251b010@juetguna.in",
-   "subject": "Update on complaint #muwlb0kt",
-   "text": "Status: Assigned\nAssigned to: Housekeeping",
-   "at": "2026-10-06T11:25:05.095Z",
-   "sent": false
-  },
-  {
-   "to": "251b010@juetguna.in",
-   "subject": "Complaint #muwlbt2n received",
-   "text": "Your Exam Marking complaint (DS (Mid-semester) - Answer sheet re-evaluation) was registered with priority Medium.",
-   "at": "2026-10-06T11:23:40.655Z",
-   "sent": false
-  },
-  {
-   "to": "251b010@juetguna.in",
-   "subject": "Update on complaint #muwlb0kt",
-   "text": "Priority changed to: Low",
-   "at": "2026-10-06T11:23:13.331Z",
-   "sent": false
-  },
-  {
-   "to": "251b010@juetguna.in",
-   "subject": "Complaint #muwlb0kt received",
-   "text": "Your Cleanliness complaint (Girls Block A, Room 10) was registered with priority Medium.",
-   "at": "2026-10-06T11:23:03.725Z",
-   "sent": false
-  },
-  {
-   "to": "251b010@juetguna.in",
-   "subject": "Complaint #muwl9waf received",
-   "text": "Your Exam Marking complaint (CS104 DBMS (Mid-semester) - Marks not updated) was registered with priority High.",
-   "at": "2026-10-06T11:22:11.511Z",
-   "sent": false
-  },
-  {
-   "to": "251b010@juetguna.in",
-   "subject": "Complaint #muwl8b8n received",
-   "text": "Your Food complaint (Girls Block D, Room 1) was registered with priority Medium.",
-   "at": "2026-10-06T11:20:57.575Z",
-   "sent": false
-  },
-  {
-   "to": "251b010@juetguna.in",
-   "subject": "Complaint #muwkn9dl received",
-   "text": "Your Electric complaint (Girls Block D, Room 1) was registered with priority Medium.",
-   "at": "2026-10-06T11:04:35.386Z",
-   "sent": false
-  }
- ]
+    "complaints": [
+        {
+            "erno": "251b010",
+            "email": "251b010@juetguna.in",
+            "course": "B.Tech",
+            "category": "Exam Marking",
+            "priority": "Medium",
+            "grp": "Exam: DS",
+            "loc": "DS (Mid-semester) - Answer sheet re-evaluation",
+            "desc": "Request for reevaluation",
+            "photo": null,
+            "id": "muwlbt2n",
+            "createdAt": "2026-10-06T11:23:40.655Z",
+            "status": "Open",
+            "history": [
+                {
+                    "s": "Open",
+                    "at": "2026-10-06T11:23:40.655Z"
+                }
+            ]
+        },
+        {
+            "erno": "251b010",
+            "email": "251b010@juetguna.in",
+            "course": "B.Tech",
+            "category": "Cleanliness",
+            "priority": "Low",
+            "grp": "Girls Block A",
+            "loc": "Girls Block A, Room 10",
+            "desc": "...",
+            "photo": null,
+            "id": "muwlb0kt",
+            "createdAt": "2026-10-06T11:23:03.725Z",
+            "status": "Resolved",
+            "history": [
+                {
+                    "s": "Open",
+                    "at": "2026-10-06T11:23:03.725Z"
+                },
+                {
+                    "s": "Assigned",
+                    "at": "2026-10-06T11:25:05.095Z"
+                },
+                {
+                    "s": "Resolved",
+                    "at": "2026-10-06T11:25:24.662Z"
+                }
+            ],
+            "assignedTo": "Housekeeping"
+        },
+        {
+            "erno": "251b010",
+            "email": "251b010@juetguna.in",
+            "course": "B.Tech",
+            "category": "Exam Marking",
+            "priority": "High",
+            "grp": "Exam: CS104 DBMS",
+            "loc": "CS104 DBMS (Mid-semester) - Marks not updated",
+            "desc": "My marks had been revised by the teacher, but the revised marks have not yet been reflected on CampusLynx.",
+            "photo": null,
+            "id": "muwl9waf",
+            "createdAt": "2026-10-06T11:22:11.511Z",
+            "status": "Open",
+            "history": [
+                {
+                    "s": "Open",
+                    "at": "2026-10-06T11:22:11.511Z"
+                }
+            ]
+        },
+        {
+            "erno": "251b010",
+            "email": "251b010@juetguna.in",
+            "course": "B.Tech",
+            "category": "Food",
+            "priority": "Medium",
+            "grp": "Girls Block D",
+            "loc": "Girls Block D, Room 1",
+            "desc": "Unhygienic handling of food in mess.",
+            "photo": null,
+            "id": "muwl8b8n",
+            "createdAt": "2026-10-06T11:20:57.575Z",
+            "status": "Open",
+            "history": [
+                {
+                    "s": "Open",
+                    "at": "2026-10-06T11:20:57.575Z"
+                }
+            ]
+        },
+        {
+            "erno": "251b010",
+            "email": "251b010@juetguna.in",
+            "course": "B.Tech",
+            "category": "Electric",
+            "priority": "Medium",
+            "grp": "Girls Block D",
+            "loc": "Girls Block D, Room 1",
+            "desc": "Room fan not working.",
+            "photo": null,
+            "id": "muwkn9dl",
+            "createdAt": "2026-10-06T11:04:35.385Z",
+            "status": "Assigned",
+            "history": [
+                {
+                    "s": "Open",
+                    "at": "2026-10-06T11:04:35.385Z"
+                },
+                {
+                    "s": "Assigned",
+                    "at": "2026-10-06T11:25:10.180Z"
+                }
+            ],
+            "assignedTo": "Electrician"
+        }
+    ],
+    "lost": [
+        {
+            "kind": "Lost",
+            "cat": "Electronic devices",
+            "item": "Earbuds",
+            "place": "Lt-2",
+            "det": "earbud lost",
+            "by": "251b010@juetguna.in",
+            "id": "muwlcofu",
+            "createdAt": "2026-10-06T11:24:21.306Z"
+        },
+        {
+            "kind": "Found",
+            "cat": "Electronic devices",
+            "item": "Earbud",
+            "place": "LT-1",
+            "det": "Blackoppo earbuds found",
+            "by": "251b010@juetguna.in",
+            "id": "muwlc8lo",
+            "createdAt": "2026-10-06T11:24:00.780Z"
+        },
+        {
+            "kind": "Lost",
+            "cat": "Electronic devices",
+            "item": "Earbud",
+            "place": "Thursday, LT-1/2",
+            "det": "Black Oppo right earbud lost.",
+            "by": "251b010@juetguna.in",
+            "id": "muwknzos",
+            "createdAt": "2026-10-06T11:05:09.484Z"
+        }
+    ],
+    "sos": [
+        {
+            "type": "Fire",
+            "erno": "251b010",
+            "id": "muwlctwh",
+            "createdAt": "2026-10-06T11:24:28.385Z"
+        },
+        {
+            "type": "Fire",
+            "erno": "Guest",
+            "id": "muwl0bfm",
+            "createdAt": "2026-10-06T11:14:44.578Z"
+        }
+    ],
+    "outbox": [
+        {
+            "to": "251b010@juetguna.in",
+            "subject": "Update on complaint #muwlb0kt",
+            "text": "Status: Resolved",
+            "at": "2026-10-06T11:25:24.662Z",
+            "sent": false
+        },
+        {
+            "to": "251b010@juetguna.in",
+            "subject": "Update on complaint #muwkn9dl",
+            "text": "Status: Assigned\nAssigned to: Electrician",
+            "at": "2026-10-06T11:25:10.180Z",
+            "sent": false
+        },
+        {
+            "to": "251b010@juetguna.in",
+            "subject": "Update on complaint #muwlb0kt",
+            "text": "Status: Assigned\nAssigned to: Housekeeping",
+            "at": "2026-10-06T11:25:05.095Z",
+            "sent": false
+        },
+        {
+            "to": "251b010@juetguna.in",
+            "subject": "Complaint #muwlbt2n received",
+            "text": "Your Exam Marking complaint (DS (Mid-semester) - Answer sheet re-evaluation) was registered with priority Medium.",
+            "at": "2026-10-06T11:23:40.655Z",
+            "sent": false
+        },
+        {
+            "to": "251b010@juetguna.in",
+            "subject": "Update on complaint #muwlb0kt",
+            "text": "Priority changed to: Low",
+            "at": "2026-10-06T11:23:13.331Z",
+            "sent": false
+        },
+        {
+            "to": "251b010@juetguna.in",
+            "subject": "Complaint #muwlb0kt received",
+            "text": "Your Cleanliness complaint (Girls Block A, Room 10) was registered with priority Medium.",
+            "at": "2026-10-06T11:23:03.725Z",
+            "sent": false
+        },
+        {
+            "to": "251b010@juetguna.in",
+            "subject": "Complaint #muwl9waf received",
+            "text": "Your Exam Marking complaint (CS104 DBMS (Mid-semester) - Marks not updated) was registered with priority High.",
+            "at": "2026-10-06T11:22:11.511Z",
+            "sent": false
+        },
+        {
+            "to": "251b010@juetguna.in",
+            "subject": "Complaint #muwl8b8n received",
+            "text": "Your Food complaint (Girls Block D, Room 1) was registered with priority Medium.",
+            "at": "2026-10-06T11:20:57.575Z",
+            "sent": false
+        },
+        {
+            "to": "251b010@juetguna.in",
+            "subject": "Complaint #muwkn9dl received",
+            "text": "Your Electric complaint (Girls Block D, Room 1) was registered with priority Medium.",
+            "at": "2026-10-06T11:04:35.386Z",
+            "sent": false
+        }
+    ]
 }
